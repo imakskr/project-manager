@@ -1,7 +1,6 @@
 # project-manager
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A javascript tool for managing repositories. This porject is under development.
 
 ## Prerequisites
 

@@ -1,0 +1,14 @@
+<form id="authenticator">
+    <div class="response_notifier">
+        <label>{{authErrorMessage}}</label>
+    </div>
+    <div id="username">        
+        {{input id="username" type="text" required="required" value=username placeholder="Username"}}    
+    </div>
+    <div>        
+        {{input id="password" type="password" required="required" value=password placeholder="Password"}} 
+    </div>
+    <div>        
+        <button {{action 'doAuth'}}>Login via Git</button>
+    </div>
+</form>
