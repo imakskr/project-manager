@@ -5,3 +5,27 @@
 .response_notifier{
     height: 50px;
 }
+.user_info_banner{
+    float: right;
+}
+.home_context{
+    width: 40%;
+}
+#repo-list{
+    border: 2px solid rgb(82, 70, 70);
+    padding: 3%;
+    line-height: 200%;
+}
+.repo_name {
+    font-weight: bold;
+}
+.repo-list-ul{
+    list-style-type: none;
+}
+.repo_item{
+    border-bottom: 1px solid rgb(75, 75, 117);
+    padding: 5px;   
+}
+.repo_item_div:hover{
+       background-color: rgb(118, 145, 145);
+}

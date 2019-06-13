@@ -1,34 +1,52 @@
 
         {{#if this.isLoggedIn}}
-            <div>
-                <div class="menu">
-                    <ul class="main_menu">
-                        {{#each this.menu as |menu_item|}}
-                            <button {{action menu_item.action}} >{{menu_item.title}}</button>
-                        {{/each}}
-                    </ul>
-                </div>
-                <div class="user_info_banner">
-                    {{this.username}}
-                </div>
-                <button {{action 'logout'}}>logout</button>
-            </div>
-            <div class="context">
-                <div>
-                    <ul>
-                        {{#each this.repoList as |repo|}}
-                            <li>
-                                <div><a><label>{{repo.name}}</label></a></div>
-                                <div>{{repo.description}}</div>
+            <center>
+                <div class="home_context">
+                    <div>
+                        <div class="user_info_banner">
+                            <label>Logged in as:</label> <b>{{this.username}}</b>
+                        </div>
+                        <div class="menu">
+                            <ul class="main_menu">
+                                {{#each this.menu as |menu_item|}}
+                                    <button {{action menu_item.action}} >{{menu_item.title}}</button>
+                                {{/each}}
+                            </ul>
+                        </div>                       
+                    </div>
+                    <div class="context">
+                        {{#if this.repoViewEnabled}}
+                            <div id="repo-list">
+                                <ul class="repo-list-ul">
+                                    {{#each this.repoList as |repo|}}
+                                        <li class="repo_item">
+                                            <div class="repo_item_div" {{action "selectRepo" repo.id}}>
+                                                <div class="repo_name"><a><label>{{repo.name}}</label></a></div>
+                                                <div class="repo_desc">{{repo.description}}</div>
+                                            </div>
+                                            {{!-- <div class="repo_item_div">
+                                                <button>select</button>
+                                            </div> --}}
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        {{/if}}
 
-                            </li>
-                        {{/each}}
-                    </ul>
+                        {{#if this.imageCapture}}
+                        <div>
+                            <video  width=400 height=400 id="video" controls autoplay></video>
+                        </div>
+                        <button {{action "snap"}}>snap</button><button {{action "stopCamStream"}}>exit</button>
+                        <div>
+                            <div>Screenshots : </div>
+                            <canvas  id="myCanvas" width="400" height="350"></canvas>
+                        </div>
+                        {{/if}}
+                        
+                    </div>
                 </div>
-                <div>
-                    <video onclick="snapshot(this);" width=400 height=400 id="video" controls autoplay></video>
-                </div>
-            </div>
+            </center>
         {{else}}
             <h3>Login First</h3>
         {{/if}}
