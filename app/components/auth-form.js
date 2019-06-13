@@ -3,37 +3,27 @@ import { computed } from '@ember/object';
 import { getOwner } from '@ember/application';
 
 export default Component.extend({
-    authenticator: computed(function(){
-        return getOwner(this).lookup('service:authenticator');
+    sessionManager: computed(function(){
+        return getOwner(this).lookup('service:sessionManager');
     }),
     authErrorMessage: "",
-    isValidUsername: function(){
-        return this.get("username")!=null;
-    },
-    isValidPassword: function(){
-        return this.get("password")!=null;
-    },
-    validateInput: function(){
-        if(!this.isValidUsername() || !this.isValidPassword()){
-            return "Please check the credentials!";
-        }else{
-            return "VALID_INPUT";
-        }
+    isValidToken: function(){
+        return this.get("token")!=null;
     },
     actions: {
         doAuth: function(){
-            var validatedMessage=this.validateInput("validateInput");
-            if("VALID_INPUT"==validatedMessage){
-                    this.send('authenticateUser');
+           
+            if(this.isValidToken()){
+                    this.send('login');
             }else{
-                this.send("postAuthErrorMessage" ,validatedMessage);
+                this.send("postAuthErrorMessage" ,"Enter a token!");
             }
         },
         postAuthErrorMessage: function(validatedMessage){
             this.set("authErrorMessage", validatedMessage);
         } ,
-        authenticateUser: function(){
-            this.authenticator.authenticate(this.get('username'), this.get('password'));
+        login: function(){
+            this.sessionManager.login(this.get('token'));
         }     
     }
 });

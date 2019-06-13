@@ -2,13 +2,11 @@
     <div class="response_notifier">
         <label>{{authErrorMessage}}</label>
     </div>
-    <div id="username">        
-        {{input id="username" type="text" required="required" value=username placeholder="Username"}}    
+    <div id="token_input">        
+        {{input id="token" type="text" required="required" value=token placeholder="Provide your access token"}}    
     </div>
+    
     <div>        
-        {{input id="password" type="password" required="required" value=password placeholder="Password"}} 
-    </div>
-    <div>        
-        <button {{action 'doAuth'}}>Login via Git</button>
+        <button {{action 'doAuth'}}>Login</button>
     </div>
 </form>

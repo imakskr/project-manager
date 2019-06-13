@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('authorize');
+  this.route('homepage');
 });
 
 export default Router;
