@@ -1,1 +1,34 @@
-{{outlet}}
+
+        {{#if this.isLoggedIn}}
+            <div>
+                <div class="menu">
+                    <ul class="main_menu">
+                        {{#each this.menu as |menu_item|}}
+                            <button {{action menu_item.action}} >{{menu_item.title}}</button>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="user_info_banner">
+                    {{this.username}}
+                </div>
+                <button {{action 'logout'}}>logout</button>
+            </div>
+            <div class="context">
+                <div>
+                    <ul>
+                        {{#each this.repoList as |repo|}}
+                            <li>
+                                <div><a><label>{{repo.name}}</label></a></div>
+                                <div>{{repo.description}}</div>
+
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div>
+                    <video onclick="snapshot(this);" width=400 height=400 id="video" controls autoplay></video>
+                </div>
+            </div>
+        {{else}}
+            <h3>Login First</h3>
+        {{/if}}

@@ -3,6 +3,21 @@ import $ from 'jquery'
 
 export default Service.extend({
 
+    getResponse: function(url, token){
+        var result=null;
+        var headers = {};
+        headers["Authorization"]="token "+token;
+        $.ajax({
+            url: url, 
+            type: "GET",
+            async: false,
+            dataType: "json",
+            headers: headers
+        }).done(function(response){
+            result=response;
+        });
+        return result;
+    },
     requestServer: function(url, type, data, isAsync ){
         return new Promise(function(resolve, reject){
             $.ajax({
@@ -21,14 +36,14 @@ export default Service.extend({
         });
 
     },
-    getFromServer: function(url, isAsync, token){
+    getFromServer: function(url, token){
         return new Promise(function(resolve, reject){
             var headers = {};
             headers["Authorization"]="token "+token;
             $.ajax({
                 url: url,
                 type: "GET",
-                async: isAsync,
+                async: true,
                 dataType: "json",
                 headers: headers,
                 success: function(response){

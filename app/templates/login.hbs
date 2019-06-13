@@ -1,0 +1,16 @@
+<div>
+        
+            <form id="authenticator">
+                <div class="response_notifier">
+                    <label>{{authErrorMessage}}</label>
+                </div>
+                <div id="token_input">        
+                    {{input id="token" type="text" value=token placeholder="Provide your access token"}}    
+                </div>                
+                <div>        
+                    <button {{action 'doAuth'}}>Login</button>
+                </div>
+            </form>
+        
+        
+    </div>

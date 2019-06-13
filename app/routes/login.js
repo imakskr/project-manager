@@ -7,8 +7,8 @@ export default Route.extend({
         return getOwner(this).lookup('service:session-manager');
     }),
     redirect: function(){
-        if(this.sessionService.isActiveSession==false){
-            this.transitionTo("login");
+        if(this.sessionService.isActiveSession){
+            this.transitionTo("homepage");
         }
     }
 });

@@ -8,7 +8,7 @@ export default Route.extend({
     }),
     redirect: function(){
         if(this.sessionService.isActiveSession==false){
-            this.transitionTo("login");
+            // this.transitionTo("login");
         }
     }
 });
