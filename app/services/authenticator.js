@@ -10,9 +10,9 @@ export default Service.extend({
         return getOwner(this).lookup('service:ajaxservice');
     }),
     bearer: null,
-    client_id: "a3bdb1e766b5fd30ac26",
-    state: "12dchs33dus",
-    client_secret: "198aff676a3d37ece7f6184db5d95d2437830702",
+    client_id: "",
+    state: "",
+    client_secret: "",
     
 
     getAccessToken: function(params){
